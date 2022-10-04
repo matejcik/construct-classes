@@ -99,4 +99,5 @@ Footer
 ------
 
 * Free software: MIT License
+
 .. * Documentation: https://construct-classes.readthedocs.io.
