@@ -1,3 +1,5 @@
+import typing as t
+
 import construct as c
 
 from construct_classes import Struct, subcon
@@ -40,3 +42,16 @@ def test_subcon():
 
     substr = parsed.b.build()
     assert substr in compiled
+
+
+class WithDefaultFactory(Struct):
+    array: t.List[BasicStruct] = subcon(BasicStruct, default_factory=list)
+
+    SUBCON = c.Struct(
+        "array" / c.Array(2, BasicStruct.SUBCON),
+    )
+
+
+def test_default():
+    dd = WithDefaultFactory()
+    assert dd.array == []

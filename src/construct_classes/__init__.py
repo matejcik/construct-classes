@@ -8,8 +8,16 @@ from typing_extensions import dataclass_transform
 Self = t.TypeVar("Self", bound="Struct")
 
 
-def subcon(cls: "t.Type[Struct]") -> t.Any:
-    return dataclasses.field(metadata={"substruct": cls})
+def subcon(
+    cls: "t.Type[Struct]",
+    *,
+    metadata: t.Optional[t.Dict[str, t.Any]] = None,
+    **kwargs: t.Any,
+) -> t.Any:
+    if metadata is None:
+        metadata = {}
+    metadata["substruct"] = cls
+    return dataclasses.field(metadata=metadata, **kwargs)
 
 
 @dataclass_transform(field_descriptors=(subcon,))
