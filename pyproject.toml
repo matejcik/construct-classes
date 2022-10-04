@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "construct-classes"
+version = "0.1.0"
+authors = ["matejcik <ja@matejcik.cz>"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+description = "Parse your binary structs into dataclasses"
+homepage = "https://github.com/matejcik/construct-classes"
+license = "MIT"
+repository = "https://github.com/matejcik/construct-classes"
+
+[tool.poetry.dependencies]
+python = ">=3.6.2,<4.0"
+construct = "^2.10"
+
+[tool.poetry.dev-dependencies]
+pytest = ">5"
+black = "^22.8.0"
+isort = "^5.10.1"
+flake8 = "^5.0.4"
+construct-typing = { version = "^0.5.2", python = ">=3.7" }
+typing-extensions = ">4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
