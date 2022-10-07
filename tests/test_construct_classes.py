@@ -55,3 +55,15 @@ class WithDefaultFactory(Struct):
 def test_default():
     dd = WithDefaultFactory()
     assert dd.array == []
+
+
+class MoreFieldsInConstruct(Struct):
+    a: int
+
+    SUBCON = c.Struct(
+        "a" / c.Int8ub,
+        "b" / c.Tell,
+    )
+
+def test_more_fields():
+    MoreFieldsInConstruct.parse(b"\x01")

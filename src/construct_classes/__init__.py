@@ -50,17 +50,18 @@ class Struct(metaclass=_StructMeta):
 
     @classmethod
     def from_parsed(cls: t.Type[Self], data: c.Container) -> Self:
-        del data["_io"]
+        args = {}
         for field in dataclasses.fields(cls):
+            field_data = data.get(field.name)
             subcls = field.metadata.get("substruct")
             if subcls is None:
+                args[field.name] = field_data
                 continue
 
-            field_data = data.get(field.name)
             if isinstance(field_data, c.ListContainer):
-                data[field.name] = [subcls.from_parsed(d) for d in field_data]
+                args[field.name] = [subcls.from_parsed(d) for d in field_data]
             elif isinstance(field_data, c.Container):
-                data[field.name] = subcls.from_parsed(field_data)
+                args[field.name] = subcls.from_parsed(field_data)
             elif field_data is None:
                 continue
             else:
@@ -68,9 +69,9 @@ class Struct(metaclass=_StructMeta):
                     f"Mismatched type for field {field.name}: expected a struct, found {type(field_data)}"
                 )
 
-        for key in data:
-            data[key] = cls._decontainerize(data[key])
-        return cls(**data)
+        for key in args:
+            args[key] = cls._decontainerize(args[key])
+        return cls(**args)
 
     @classmethod
     def parse(cls: t.Type[Self], data: bytes) -> Self:
