@@ -84,7 +84,7 @@ must match the names of the fields in the Construct struct.
 Use :code:`dataclasses.field()` to specify attributes on fields that are not subcons.
 
 There are currently no other features. In particular, the resulting class is a Python
-dataclass, but you cannot specify its parameters like `frozen` etc.
+dataclass, but you cannot specify its parameters like :code:`frozen` etc.
 
 
 Installing
@@ -93,6 +93,14 @@ Installing
 Install using pip:
 
     $ pip install construct-classes
+
+
+Changelog
+~~~~~~~~~
+
+See `CHANGELOG.rst`_.
+
+.. _CHANGELOG.rst: https://github.com/matejcik/construct-classes/blob/master/CHANGELOG.rst
 
 
 Footer
