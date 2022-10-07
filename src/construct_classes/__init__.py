@@ -2,7 +2,14 @@ import dataclasses
 import typing as t
 
 import construct as c
-from typing_extensions import dataclass_transform
+
+if t.TYPE_CHECKING:
+    from typing_extensions import dataclass_transform
+else:
+    def dataclass_transform(**kwargs: t.Any) -> t.Any:
+        def inner(cls: t.Any) -> t.Any:
+            return cls
+        return inner
 
 # workaround for mypy self type bug
 Self = t.TypeVar("Self", bound="Struct")
@@ -20,7 +27,7 @@ def subcon(
     return dataclasses.field(metadata=metadata, **kwargs)
 
 
-@dataclass_transform(field_descriptors=(subcon,))
+@dataclass_transform(field_specifiers=(subcon,))
 class _StructMeta(type):
     def __new__(
         cls, name: str, bases: t.Tuple[type, ...], namespace: t.Dict[str, t.Any]
