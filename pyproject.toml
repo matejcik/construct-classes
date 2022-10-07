@@ -20,6 +20,7 @@ homepage = "https://github.com/matejcik/construct-classes"
 license = "MIT"
 repository = "https://github.com/matejcik/construct-classes"
 readme = "README.rst"
+include = ["CHANGELOG.rst", "LICENSE", "README.rst"]
 
 [tool.poetry.dependencies]
 python = ">=3.6.2,<4.0"
