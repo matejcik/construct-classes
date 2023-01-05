@@ -29,6 +29,7 @@ include = [
 [tool.poetry.dependencies]
 python = ">=3.6.2,<4.0"
 construct = "^2.10"
+dataclasses = { version = "^0.8", python = "~3.6.0" }
 
 [tool.poetry.dev-dependencies]
 pytest = ">5"
