@@ -106,3 +106,13 @@ def test_dataclass_passthrough():
     # eq is not implemented
     b = DataclassPassthrough(a=1)
     assert a != b
+
+
+def test_indirect_descendant():
+    """
+    regression test for #5: a subclass of a subclass of a Struct would have caused an
+    exception on definition
+    """
+
+    class Sub(BasicStruct):
+        pass

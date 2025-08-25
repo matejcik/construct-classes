@@ -11,7 +11,15 @@ Unreleased
 
 Please see all `Unreleased Changes`_ for more information.
 
-.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.0...HEAD
+.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.1...HEAD
+
+0.2.1 - 2025-08-25
+--------------------
+
+Fixed
+~~~~~
+
+- Fix exception when creating a subclass of a subclass of :code:`Struct`.
 
 
 0.2.0 - 2025-08-25

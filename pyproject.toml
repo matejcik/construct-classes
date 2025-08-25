@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "construct-classes"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["matejcik <ja@matejcik.cz>"]
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",

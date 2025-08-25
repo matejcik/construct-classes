@@ -42,8 +42,9 @@ class _StructMeta(type):
         **kwargs: t.Any,
     ) -> type:
         new_cls = super().__new__(cls, name, bases, namespace)
-        if bases:
-            assert bases[0].__name__ == "Struct"
+        if any(isinstance(b, _StructMeta) for b in bases):
+            # skip over `Struct` itself, which does not have a StructMeta class in its
+            # bases.
             return dataclasses.dataclass(kw_only=kw_only, **kwargs)(new_cls)
         else:
             return new_cls
@@ -90,3 +91,7 @@ class Struct(metaclass=_StructMeta):
     def parse(cls: t.Type[Self], data: bytes) -> Self:
         result = cls.SUBCON.parse(data)
         return cls.from_parsed(result)
+
+
+# check that `Struct` itself is not transformed
+assert not dataclasses.is_dataclass(Struct)
