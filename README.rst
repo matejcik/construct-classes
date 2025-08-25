@@ -83,8 +83,21 @@ must match the names of the fields in the Construct struct.
 
 Use :code:`dataclasses.field()` to specify attributes on fields that are not subcons.
 
-There are currently no other features. In particular, the resulting class is a Python
-dataclass, but you cannot specify its parameters like :code:`frozen` etc.
+By default, subclasses of :code:`Struct` are :code:`kw_only`. This is specifically to
+allow setting default values on any fields regardless of order, so that your attributes
+can be listed in the subcon order.
+
+However, you can pass any valid dataclass parameters to the :code:`Struct` class via
+class attributes:
+
+.. code-block:: python
+
+    class MyStruct(Struct, kw_only=False, frozen=True):
+        a: int
+        b: int
+
+    my_struct = MyStruct(1, 2)  # ok
+    my_struct.a = 2  # FrozenInstanceError
 
 
 Installing

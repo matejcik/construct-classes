@@ -1,6 +1,8 @@
 import typing as t
+from dataclasses import FrozenInstanceError
 
 import construct as c
+import pytest
 
 from construct_classes import Struct, subcon
 
@@ -65,5 +67,42 @@ class MoreFieldsInConstruct(Struct):
         "b" / c.Tell,
     )
 
+
 def test_more_fields():
     MoreFieldsInConstruct.parse(b"\x01")
+
+
+class DefaultsNotLast(Struct):
+    a: int = 1
+    b: int
+
+    SUBCON = c.Struct(
+        "a" / c.Int8ub,
+        "b" / c.Int8ub,
+    )
+
+
+def test_defaults_not_last():
+    rebuilt = DefaultsNotLast(b=5).build()
+    reparsed = DefaultsNotLast.parse(rebuilt)
+    assert reparsed.a == 1
+    assert reparsed.b == 5
+
+
+class DataclassPassthrough(Struct, frozen=True, eq=False):
+    a: int
+
+    SUBCON = c.Struct(
+        "a" / c.Int8ub,
+    )
+
+
+def test_dataclass_passthrough():
+    a = DataclassPassthrough(a=1)
+    with pytest.raises(FrozenInstanceError):
+        a.a = 2  # type: ignore  # yes, it is an error
+    assert a.a == 1
+
+    # eq is not implemented
+    b = DataclassPassthrough(a=1)
+    assert a != b

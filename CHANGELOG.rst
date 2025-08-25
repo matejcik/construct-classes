@@ -11,7 +11,24 @@ Unreleased
 
 Please see all `Unreleased Changes`_ for more information.
 
-.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.1.2...HEAD
+.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.0...HEAD
+
+
+0.2.0 - 2025-08-25
+--------------------
+
+Added
+~~~~~
+
+- Allow pass-through of dataclass arguments via class attributes.
+
+Incompatible changes
+~~~~~~~~~~~~~~~~~~~~
+
+- Subclasses of :code:`Struct` are now :code:`kw_only` by default. This will break
+  any constructor invocations using positional arguments. You can explicitly
+  set :code:`kw_only=False` on your :code:`Struct` subclass to restore the old
+  behavior.
 
 
 0.1.2 - 2022-10-07
