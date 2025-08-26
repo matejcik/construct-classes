@@ -1,50 +1,56 @@
-[tool.poetry]
+[project]
 name = "construct-classes"
 version = "0.2.1"
-authors = ["matejcik <ja@matejcik.cz>"]
-classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
-  "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
-  "Natural Language :: English",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.14",
-]
 description = "Parse your binary structs into dataclasses"
-homepage = "https://github.com/matejcik/construct-classes"
-license = "MIT"
-repository = "https://github.com/matejcik/construct-classes"
+authors = [{ name = "matejcik", email = "ja@matejcik.cz" }]
+requires-python = ">=3.6.2,<4.0"
 readme = "README.rst"
-include = [
-  { path = "CHANGELOG.rst", format = "sdist" },
-  { path = "LICENSE", format = "sdist" },
-  { path = "README.rst", format = "sdist" }
+license = "MIT"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "construct~=2.10",
+    "dataclasses>=0.8,<0.9 ; python_version ~= '3.6.0'",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.6.2,<4.0"
-construct = "^2.10"
-dataclasses = { version = "^0.8", python = "~3.6.0" }
+[project.urls]
+Homepage = "https://github.com/matejcik/construct-classes"
+Repository = "https://github.com/matejcik/construct-classes"
 
-[tool.poetry.dev-dependencies]
-pytest = ">5"
-black = "^22.8.0"
-isort = "^5.10.1"
-flake8 = "^5.0.4"
-construct-typing = { version = "^0.5.2", python = ">=3.7" }
-typing-extensions = { version = ">4.2", python = ">=3.7" }
+[dependency-groups]
+dev = [
+    "pytest>5",
+    "black>=22.8.0,<23",
+    "isort>=5.10.1,<6",
+    "flake8>=5.0.4,<6",
+    "construct-typing>=0.5.2,<0.6 ; python_version >= '3.7'",
+    "typing-extensions>4.2 ; python_version >= '3.7'",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.8.13,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+source-include = [
+    "CHANGELOG.rst",
+    "LICENSE",
+    "README.rst",
+]
 
 [tool.isort]
 profile = "black"
