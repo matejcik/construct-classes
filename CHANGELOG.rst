@@ -11,7 +11,16 @@ Unreleased
 
 Please see all `Unreleased Changes`_ for more information.
 
-.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.1...HEAD
+.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.2...HEAD
+
+0.2.2 - 2025-08-26
+--------------------
+
+Removed
+~~~~~~~
+
+- Drop support for Pythons 3.9 and older. This was broken in 0.2 and improperly marked
+  by the package metadata.
 
 0.2.1 - 2025-08-25
 --------------------

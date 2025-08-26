@@ -1,9 +1,9 @@
 [project]
 name = "construct-classes"
-version = "0.2.1"
+version = "0.2.2"
 description = "Parse your binary structs into dataclasses"
 authors = [{ name = "matejcik", email = "ja@matejcik.cz" }]
-requires-python = ">=3.6.2,<4.0"
+requires-python = ">=3.10,<4.0"
 readme = "README.rst"
 license = "MIT"
 classifiers = [
@@ -12,10 +12,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -24,7 +20,6 @@ classifiers = [
 ]
 dependencies = [
     "construct~=2.10",
-    "dataclasses>=0.8,<0.9 ; python_version ~= '3.6.0'",
 ]
 
 [project.urls]
@@ -37,8 +32,8 @@ dev = [
     "black>=22.8.0,<23",
     "isort>=5.10.1,<6",
     "flake8>=5.0.4,<6",
-    "construct-typing>=0.5.2,<0.6 ; python_version >= '3.7'",
-    "typing-extensions>4.2 ; python_version >= '3.7'",
+    "construct-typing>=0.5.2,<0.6",
+    "typing-extensions>4.2",
 ]
 
 [build-system]
