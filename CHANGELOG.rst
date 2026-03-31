@@ -11,7 +11,16 @@ Unreleased
 
 Please see all `Unreleased Changes`_ for more information.
 
-.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.2...HEAD
+.. _Unreleased Changes: https://github.com/matejcik/construct-classes/compare/v0.2.3...HEAD
+
+0.2.3 - 2026-03-31
+------------------
+
+Changed
+~~~~~~~
+
+- Use :code:`flit_core` for building the package.
+
 
 0.2.2 - 2025-08-26
 --------------------
@@ -54,7 +63,7 @@ Incompatible changes
 Fixed
 ~~~~~
 
-- Support for dataclasses that do not contain all the attributes described 
+- Support for dataclasses that do not contain all the attributes described
   in :code:`SUBCON`.
 
 

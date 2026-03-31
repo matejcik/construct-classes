@@ -1,6 +1,6 @@
 [project]
 name = "construct-classes"
-version = "0.2.2"
+version = "0.2.3"
 description = "Parse your binary structs into dataclasses"
 authors = [{ name = "matejcik", email = "ja@matejcik.cz" }]
 requires-python = ">=3.10,<4.0"
@@ -9,7 +9,6 @@ license = "MIT"
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -37,14 +36,15 @@ dev = [
 ]
 
 [build-system]
-requires = ["uv_build>=0.8.13,<0.10.0"]
-build-backend = "uv_build"
+requires = ["flit_core>=3.4,<4"]
+build-backend = "flit_core.buildapi"
 
-[tool.uv.build-backend]
-source-include = [
+[tool.flit.sdist]
+include = [
     "CHANGELOG.rst",
     "LICENSE",
     "README.rst",
+    "tests/",
 ]
 
 [tool.isort]
